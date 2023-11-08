@@ -48,7 +48,7 @@
 	}
 
 	///поиск значения элемента с номером number
-	double Progression::Value_n_element(int number) {              //проверка на положительность
+	double Progression::Value_n_element(int number) const{             
 		if (PType == ProgressionType::Arithmetic)
 			return FirstElem + Step * (number - 1);
 
@@ -59,7 +59,7 @@
 	}
 
 	///поиск суммы первых quantity элементов
-	double Progression::Find_the_sum(int quantity){
+	double Progression::Find_the_sum(int quantity) const{
 		if (PType == ProgressionType::Arithmetic) 
 			return (2 * FirstElem + Step * (quantity - 1)) / 2.0 * quantity;
 
@@ -73,11 +73,11 @@
 	}
 
 	///преобразование данных класса в строку
-	std::string Progression::To_String() {
+	std::string Progression::To_String() const{
 		if (PType == ProgressionType::Arithmetic)
-			return "This is an arithmetic progression with steps " + std::to_string(Step) + " and the value of the first element " + std::to_string(FirstElem);
+			return "Arithmetic " + std::to_string(Step) + " " + std::to_string(FirstElem);
 		else
-			return "This is an geometric progression with steps " + std::to_string(Step) + " and the value of the first element " + std::to_string(FirstElem);
+			return "Geometric " + std::to_string(Step) + " " + std::to_string(FirstElem);
 	}
 
 	///проверка правильности выполнения функций Value_n_element и Find_the_sum 

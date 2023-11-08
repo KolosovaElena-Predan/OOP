@@ -51,13 +51,13 @@ public:
 	void set_PType(ProgressionType new_type);
 
 	///поиск значения элемента с номером number
-	double Value_n_element(int number);
+	double Value_n_element(int number) const;
 
 	///поиск суммы первых quantity элементов
-	double Find_the_sum(int quantity);
+	double Find_the_sum(int quantity) const;
 
 	///преобразование данных класса в строку
-	std::string To_String();
+	std::string To_String() const;
 
 };
 
