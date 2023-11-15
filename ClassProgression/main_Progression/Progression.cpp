@@ -1,6 +1,8 @@
 ﻿///Разработала Колосова Елена
 #include <string>
+#include <fstream>
 #include <cmath>
+#include <iostream>
 #include <assert.h>
 #include "Progression.h"
 //#include "Progression.h"
@@ -123,4 +125,58 @@
 		assert(abs(P.Value_n_element(7) - ( - 1.48807)) < 0.00001);
 
 
+	}
+
+
+	///вывод информации о пргрессии в файл
+	void print_in_file(std::string FileName, Progression ProgressionName) {
+		std::fstream file;
+		file.open(FileName);
+		if (file.is_open()) {
+			file.seekg(0);
+			file<<ProgressionName.To_String();
+		}
+		else
+			throw std::invalid_argument("File not found");
+		file.close();
+	}
+
+
+	///заполнение данных для прогрессии из файла
+	void fill_from_file(std::string FileName, Progression &ProgressionName) {
+		std::fstream file;
+		std::string s; //содержит строку, считанную с файла
+		std::string s1;
+		file.open(FileName);
+		if (file.is_open()) {
+			file.seekg(0);
+			std::getline(file, s);
+			int i = 0;
+			while (s[i] != ' ') {
+				s1 = s1 + s[i];
+				i = i + 1;
+			}
+			if (s1 == "Arithmetic")
+				ProgressionName.set_PType(ProgressionType::Arithmetic);
+			else ProgressionName.set_PType(ProgressionType::Geometric);
+			i = i + 1;
+			s1 = "";
+			while (s[i] != ' ') {
+				s1 = s1 + s[i];
+				i = i + 1;
+			}
+			float m = stof(s1);
+			ProgressionName.set_Step(m);
+			i = i + 1;
+			s1 = "";
+			while (s[i] != '\0') {
+				s1 = s1 + s[i];
+				i = i + 1;
+			}
+			m = stof(s1);
+			ProgressionName.set_FirstElem(m);
+		}
+		else
+			throw std::invalid_argument("File not found");
+		file.close();
 	}

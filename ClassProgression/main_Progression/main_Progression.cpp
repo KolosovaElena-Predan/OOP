@@ -1,5 +1,5 @@
 ﻿//выполнила Колосова Елена
-
+#include <string>
 #include <iostream>
 #include "Progression.h"
 int main()
@@ -8,9 +8,10 @@ int main()
     //проверка правильности работы некоторых функций
     Progression_Test();
 
+
     ///объявление статического объекта
     Progression A1;
-
+    std::string str = "1.txt";
     A1.set_FirstElem(2);//задание первого элемента
     A1.set_Step(2);//задание шага
 
@@ -21,9 +22,15 @@ int main()
     std::cout << "Sum of first 4 elements: "<<A1.Find_the_sum(4) << std::endl; //вывод значения суммы 4 элементов
     std::cout << A1.To_String()<< std::endl; //вывод данных в строку
     std::cout << std::endl;
+    
+    print_in_file(str, A1);
 
-
-
+    //для демонстрации работы функции fill_from_file
+    Progression B1;
+    std::cout << "Exemple 1.1" << std::endl;
+    fill_from_file(str, B1);
+    std::cout << B1.To_String() << std::endl; //вывод данных в строку
+    std::cout << std::endl;
 
     ///объявление константного статического объекта
     const Progression A2;
@@ -50,4 +57,40 @@ int main()
     std::cout << "Sum of first 6 elements: " << A3->Find_the_sum(6) << std::endl; //вывод значения суммы 4 элементов
     std::cout << A3->To_String() << std::endl; //вывод данных в строку
     std::cout << std::endl;
+    delete A3;
+
+    ///статический массив
+    Progression A4[3]{ Progression(1, 2),
+                        Progression(2, 0.5),
+                        Progression(3, 2) };
+
+    std::cout << "Exemple 4" << std::endl;
+    std::cout<<A4[0].get_FirstElem()<<" "<< A4[1].get_FirstElem()<<" "<< A4[2].get_FirstElem()<< std::endl;
+    std::cout << std::endl;
+
+
+    ///массив из указателей на объекты
+    Progression *A5[2];
+
+    A5[0] = new Progression(2, 3);
+    A5[1] = new Progression(1, 0.5);
+    std::cout << "Exemple 5" << std::endl;
+    std::cout << "Steps: " << A5[0]->get_Step() << " " << A5[1]->get_Step() << std::endl;
+    std::cout << std::endl;
+    delete A5[0];
+    delete A5[1];
+
+    ///дин. массив из указателей на объекты 
+    Progression* *A6 = new Progression* [2];
+    for (int i = 0; i < 2; i++)
+        A6[i] = new Progression();
+
+    for (int i = 0; i < 2; i++)
+        delete A6[i];
+    delete[] A6;
+
+
+
+
+
 }

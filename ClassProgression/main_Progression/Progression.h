@@ -64,3 +64,9 @@ public:
 ///проверка правильности выполнения функций Value_n_element и Find_the_sum 
 void Progression_Test();
 
+///вывод информации о пргрессии в файл
+void print_in_file(std::string FileName, Progression ProgressionName);
+
+///заполнение данных для прогрессии из файла
+void fill_from_file(std::string FileName, Progression &ProgressionName);
+
