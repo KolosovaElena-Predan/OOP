@@ -1,0 +1,7 @@
+﻿  Matrix.cpp
+D:\OOP\ClassMatrix\main_matrix\Matrix.cpp(39,20): warning C4244: return: преобразование "unsigned __int64" в "double", возможна потеря данных
+D:\OOP\ClassMatrix\main_matrix\Matrix.cpp(45,23): warning C4244: return: преобразование "unsigned __int64" в "double", возможна потеря данных
+D:\OOP\ClassMatrix\main_matrix\Matrix.cpp(57,17): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+D:\OOP\ClassMatrix\main_matrix\Matrix.cpp(66,21): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+D:\OOP\ClassMatrix\main_matrix\Matrix.cpp(156,30): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+  main_matrix.vcxproj -> D:\OOP\ClassMatrix\main_matrix\x64\Debug\main_matrix.exe
