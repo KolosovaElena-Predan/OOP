@@ -72,7 +72,7 @@ void Matrix::set_column(double new_value) {
 
 ///сеттер для матрицы
 ///new_value - новое значение матрицы
-void Matrix::set_matrix(std::vector<std::vector<double> > new_value) {
+void Matrix::set_matrix(const std::vector<std::vector<double> >& new_value) {
 	matrix = new_value;
 }
 
@@ -118,7 +118,7 @@ void Matrix::transpose() {
 }
 
 ///сложение матриц
-Matrix Matrix::operator+(Matrix& A) const{
+Matrix Matrix::operator+(const Matrix& A) const{
 	if ((matrix.size() == A.get_rows()) && (matrix[0].size() == A.get_column())) {
 		Matrix result = Matrix(A);
 		for (int i = 0; i < result.matrix.size(); i++)
@@ -130,7 +130,7 @@ Matrix Matrix::operator+(Matrix& A) const{
 }
 
 /// вычитание матриц
-Matrix Matrix::operator-(Matrix& A) const {
+Matrix Matrix::operator-(const Matrix& A) const {
 	if ((matrix.size() == A.get_rows()) && (matrix[0].size() == A.get_column())) {
 		Matrix result = Matrix(A);
 		for (int i = 0; i < result.matrix.size(); i++)
@@ -142,19 +142,21 @@ Matrix Matrix::operator-(Matrix& A) const {
 }
 
 /*///умножение матрицы на число
-///number - число-множитель
-Matrix Matrix::operator*(double a)
+Matrix Matrix::operator*(Matrix& B, double a)
 {
-	for (int i = 0; i < matrix.size(); i++)
-		for (int j = 0; j < matrix[0].size(); j++)
-			matrix[i][j] = matrix[i][j] * a;
+	Matrix result = Matrix(B);
+	for (int i = 0; i < result.matrix.size(); i++)
+		for (int j = 0; j < result.matrix[0].size(); j++)
+			result.matrix[i][j] = B.matrix[i][j] * a;
+	return result;
 }*/
 
 /// умножение матриц
-Matrix Matrix::operator*(Matrix& A) const {
+Matrix Matrix::operator*(const Matrix& A) const {
 	if (matrix[0].size() == A.get_rows()) {
-		Matrix result = Matrix(A);
+		Matrix result;
 		result.set_rows(matrix.size());
+		result.set_column(matrix[0].size());
 		for (int i = 0; i < matrix.size(); i++)
 			for (int j = 0; j < A.matrix[0].size(); j++) {
 				result.matrix[i][j] = 0;
@@ -168,7 +170,7 @@ Matrix Matrix::operator*(Matrix& A) const {
 
 
 ///вывод матрицы н аэкран
-void print_matrix(Matrix& A) {
+void print_matrix(const Matrix& A) {
 	std::vector<std::vector<double> > m = A.get_matrix();
 	for (int i = 0; i < A.get_rows(); i++) {
 		for (int j = 0; j < A.get_column(); j++)

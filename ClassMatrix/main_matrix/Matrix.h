@@ -50,7 +50,7 @@ public:
 
 	///сеттер для матрицы
 	///new_value - новое значение матрицы
-	void set_matrix(std::vector<std::vector<double> > new_value);
+	void set_matrix(const std::vector<std::vector<double> >& new_value);
 
 	///заполнение матрицы одним значением
 	///value - значение, которму должны быть равны все элементы матрицы
@@ -71,19 +71,19 @@ public:
 	void transpose();
 
 	///сложение матриц
-	Matrix operator+(Matrix& A) const;
+	Matrix operator+(const Matrix& A) const;
 
 	/// вычитание матриц
-	Matrix operator-(Matrix& A) const;
+	Matrix operator-(const Matrix& A) const;
 	
 	/// умножение матриц
-	Matrix operator*(Matrix& A) const;
+	Matrix operator*(const Matrix& A) const;
 	
 
 };
 
 	///вывод матрицы н аэкран
-	void print_matrix(Matrix& A);
+	void print_matrix(const Matrix& A);
 
 	///проверка работы функций программы
 	void test();
