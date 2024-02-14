@@ -1,0 +1,12 @@
+﻿  Array.cpp
+C:\Users\kolos\Desktop\ООП\Примеры для конспектов\Array\Array.cpp(20,56): warning C4244: =: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\kolos\Desktop\ООП\Примеры для конспектов\Array\Array.cpp(77,5): message : выполняется компиляция ссылки на экземпляр шаблон функции "void array_fill_randomly<int>(T *,unsigned int,T,T)"
+          with
+          [
+              T=int
+          ]
+  Array.vcxproj -> C:\Users\kolos\Desktop\ООП\Примеры для конспектов\Array\x64\Debug\Array.exe
